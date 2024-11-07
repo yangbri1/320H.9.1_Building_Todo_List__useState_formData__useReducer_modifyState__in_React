@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+input{
+  padding-left: 5px;
+}
+
+/* apply text-align property to pseudo-element ::placeholder */
+input::placeholder{
+  text-align:center;
+  
+}
