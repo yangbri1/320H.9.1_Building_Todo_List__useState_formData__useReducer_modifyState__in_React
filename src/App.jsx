@@ -24,8 +24,8 @@ function reducer(todos, action){
       return(todos.map((task) => {
         // if task's id is the same as current id
         if(task.id === action.payload.id){
-          // return copy of new task obj now w/ complete status of true -- chore finished
-          return({ ...task, complete: true })
+          // return copy of new task obj now w/ "complete" status negated 
+          return({ ...task, complete: !task.complete });
         }
         // otw yield task itself w/o any changes
         else{
@@ -34,13 +34,16 @@ function reducer(todos, action){
       }));
     case ACTION.REMOVETASK:
       // goes through todos list & create a new copy where ...
-      return(todos.filter((task) => {
-        // if task's id DN equal to task payload id -- keep it
+      return(todos.filter((task) => 
+        /*NOTE TO SELF: Habitually tempted to put up squiggly brackets up here to contain 
+        DON'T else filter will encapsulate ALL tasks at hand (delete all when pressed) */
+        // if task's id DN equal to task payload id, keep it --- otw remove
         task.id !== action.payload.id
-      }));
+      ));
 
     // default action if neither of the actions above are invoked
     default:
+      // return state
       return todos;
   }
 }
@@ -86,15 +89,15 @@ function App() {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input type="text"  value={title} onChange={(e) => setTitle(e.target.value)}  />
+        <input type="text"  value={title} onChange={(event) => setTitle(event.target.value)}  />
       </form>
 
-      {todos.map((errand) => {
+      {todos.map((task) => {
         return(
           // calling function component
           /*Note: passing dispatch() function (w/ an "action" and payload.id) down to <Todo>
           grants access to dispatch() fn in <Todo /> functional component */
-          <Todo key={errand.id} errand={errand} dispatch={dispatch} />
+          <Todo key={task.id} task={task} dispatch={dispatch} />
         )
       })}
     </>
