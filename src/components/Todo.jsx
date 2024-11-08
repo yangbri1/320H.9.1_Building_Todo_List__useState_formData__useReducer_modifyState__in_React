@@ -1,5 +1,5 @@
 // import ACTION array
-import { ACTION } from "../App.jsx";
+import { ACTION } from "../utilities/reducerActions.mjs"
 
 // create functional component Todo() 
 export default function Todo({ task, dispatch }){
@@ -14,12 +14,12 @@ export default function Todo({ task, dispatch }){
                     dispatch({ type: ACTION.TOGGLETASK, payload: { id: task.id}})}
                     
             >Toggle</button>
-            
+
             <button
                 onClick={() => 
                     dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})}
                 
-            >Remove
+            >Delete
             </button>
             <br />
         </>
