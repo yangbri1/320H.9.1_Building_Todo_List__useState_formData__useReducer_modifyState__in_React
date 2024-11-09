@@ -7,6 +7,7 @@ import { useImmerReducer } from 'use-immer';
 // import reducer function actions
 import { ACTION } from "./reducerActions.mjs";
 
+/*IMPORTANT: MOST logic done in reducer() function */
 // reducer() function called by dispatch to return new updated state using passed action
 export function taskReducer(todos, action){
     switch(action.type){
@@ -21,15 +22,12 @@ export function taskReducer(todos, action){
           // if task is already on the list pop-up alert user 
           if(task.title === action.payload.title){
             // string interpolation ($) on tempate literals (``) for a customize BOM .alert() -- recall: can NOT stylize BOM text
-            let dupeTask = window.confirm(`🚨 Duplicate task detected: 🚨 \t "${action.payload.title}" \n \n 💡 Notice: Toggling tasks is available 💡 \n Intentional duplicate?`);
-            
-            taskInclude = dupeTask ? true : false;
-            window.alert(`${action.payload.title} added`);
+            let dupeTask = window.alert(`🚨 Duplicate task detected: 🚨 \t "${action.payload.title}" \n \n 💡 Notice: Toggling tasks is available 💡`);
+            taskInclude = true;
+            // taskInclude = dupeTask ? true : false;
+            // window.alert(`${action.payload.title} added`);
           }
-          
         });
-        
-
         // jumping out from loop, just return current todos list (this step added otw, could add duplicate to todos after BOM when attempted)
         if(taskInclude){
           return todos;
@@ -62,6 +60,7 @@ export function taskReducer(todos, action){
           DON'T else filter will encapsulate ALL tasks at hand (delete all when pressed) */
           // if task's id DN equal to task payload id, keep it --- otw remove
           task.id !== action.payload.id
+          // Aside: also filter by "task.title" would work here as above in ADDTASK action, made sure each task being added is "unique"
         ));
 
       case ACTION.EDITTASK:

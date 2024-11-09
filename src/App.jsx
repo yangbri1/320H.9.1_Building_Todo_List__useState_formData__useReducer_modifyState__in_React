@@ -44,9 +44,21 @@ function App() {
   return (
     <>
       <h1>Create Todo List</h1>
+      {/* onSubmit event handler that triggers whenever form data is submitted  */}
+      {/* https://stackoverflow.com/questions/23762474/whats-the-difference-between-onclick-and-onsubmit */}
       <form onSubmit={handleSubmit}>
-        <input type="text"  value={title} onChange={(event) => setTitle(event.target.value)}  />
+        <input type="text" placeholder="Add task" value={title} onChange={(event) => setTitle(event.target.value)} />
+        <input type="submit" value="Enter" />
+        {/* onClick event is for when anything is clicked */}
+        {/* <input type="button" onClick={handleSubmit} value="Enter" /> */}
       </form>
+
+      <br />
+
+      <label>
+        <input type="checkbox" defaultChecked={true} name="mockup" />
+        Create Mockup
+      </label>
 
       {todos.map((task) => {
         return(
@@ -54,7 +66,7 @@ function App() {
           /*Note: passing dispatch() function (w/ an "action" and payload.id) down to <Todo>
           grants access to dispatch() fn in <Todo /> functional component */
           <Todo key={task.id} task={task} dispatch={dispatch} />
-        )
+        );
       })}
     </>
     // <>
