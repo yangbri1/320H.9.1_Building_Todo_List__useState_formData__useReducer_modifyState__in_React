@@ -1,6 +1,9 @@
 /* centralized ALL logic now in reducer() --- instead of having separate state handling logic fns
 "action" is always an obj we take it (type: addTask, deleteTask, etc.) */
 
+// import useImmerReducer() hook from use-immer package -- sacrifice a little performance for state to be "mutable" allow array/obj mutations
+import { useImmerReducer } from 'use-immer';
+
 // import reducer function actions
 import { ACTION } from "./reducerActions.mjs";
 
@@ -12,7 +15,11 @@ export function taskReducer(todos, action){
         // along with a newly added todo to an array
         /* NOTE: PAYLOAD IS ALWAYS A PROPERTY OF THE ACTION OBJ 
         --- use dot notation to access payload & pass in "title" from input form */
-        return [...todos, newTask(action.payload.title)];
+        return [ newTask(action.payload.title), ...todos];
+        // if(title === ""){
+        //   return todos;
+        // }
+
       case ACTION.TOGGLETASK:
         // traverse through todos list for each tasks & create a copy under function/conditions
         return(todos.map((task) => {
