@@ -68,8 +68,8 @@ function App() {
             {/* Note: passing dispatch() function (w/ an "action" and payload.id) down to <Todo>
             grants access to dispatch() fn in <Todo /> functional component */}
             <label>
-              <input type="checkbox" defaultChecked={true} name="mockup" />
-              <Todo key={task.id} task={task} dispatch={dispatch} />
+              <input type="checkbox" defaultChecked={true} name="task" value={<Todo key={task.id} task={task} dispatch={dispatch} />} />
+              {/* <Todo key={task.id} task={task} dispatch={dispatch} /> */}
             </label>
             
           </>
