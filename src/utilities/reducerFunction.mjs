@@ -12,17 +12,22 @@ export function taskReducer(todos, action){
     switch(action.type){
       case ACTION.ADDTASK:
         // if no task is inserted ... just display current todos list (no change)
-        if(action.payload.title === ""){
-          return todos;
-        }
-
+        // if(action.payload.title === ""){
+        //   return todos;
+        // }
+        let taskIn = false;
+        // iterate through each task in todos list
         todos.forEach((task) => {
-          if(task.title === action.payload.title){
-            let numeric = '&#9658'
+          // if task is already on the list pop-up alert user 
+          if(task.title === action.payload.title || action.payload.title === ""){
             // string interpolation ($) on tempate literals (``) for a customize BOM .alert() -- recall: can NOT stylize BOM text
-            window.alert(`🚨Duplicate task detected: 🚨 \t --- ${numeric} ${action.payload.title} ${'&#9668'} \n \n💡(Toggling tasks is available ${'&#9787'})💡`);
+            window.alert(`🚨 Duplicate task detected: 🚨 \t "${action.payload.title}" \n \n 💡 Notice: Toggling tasks is available 💡`);
+            taskIn = true;
           }
         });
+        // if(taskIn){
+        //   return todos;
+        // }
         /* NOTE: PAYLOAD IS ALWAYS A PROPERTY OF THE ACTION OBJ 
         --- use dot notation to access payload & pass in "title" from input form */
         /* use spread operator (...) to create a copy of previous todo list (both objs, arrays are immutable in state)
