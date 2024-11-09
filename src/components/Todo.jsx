@@ -24,8 +24,8 @@ export default function Todo({ task, dispatch }){
                         dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})} 
                     // https://www.geeksforgeeks.org/how-to-disable-a-button-in-reactjs/
                     // Aside: DN know "disabled" could be written this way 
-                    // ternary operator to conditionally enable/disable "Delete" functionality based on task's complete status
-                    disabled={task.complete ? true : false}
+                    // ternary operator to conditionally enable "Delete" functionality when task's complete status is true
+                    disabled={task.complete ? false : true}
                 />
             </label>
             
@@ -41,7 +41,7 @@ export default function Todo({ task, dispatch }){
                 onClick={() => 
                     dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})}
 
-                // disabled={task.complete ? true : false}
+                // disabled={task.complete ? false : true}
                 
             >Edit
             </button>
