@@ -34,11 +34,14 @@ function App() {
     dispatch({ type: ACTION.ADDTASK, payload: { title: title }});
     setTitle('');  // clears out task after typing input
   }
+  // technically able to put handleSubmit() into taskReducer(), omitted setTitle & use a button,
+  // NavBar for header too? Check crypto lab
 
   console.log(todos); // displaying results in console
 
   return (
     <>
+      <h1>Create Todo List</h1>
       <form onSubmit={handleSubmit}>
         <input type="text"  value={title} onChange={(event) => setTitle(event.target.value)}  />
       </form>

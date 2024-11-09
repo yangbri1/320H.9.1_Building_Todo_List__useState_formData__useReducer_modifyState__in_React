@@ -3,4 +3,5 @@ export const ACTION = {
     ADDTASK: 'addTask',
     TOGGLETASK: 'toggleTask',
     REMOVETASK: 'removeTask',
+    EDITTASK: 'editTask',
 }

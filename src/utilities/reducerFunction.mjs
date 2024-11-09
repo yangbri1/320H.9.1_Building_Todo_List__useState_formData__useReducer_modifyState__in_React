@@ -34,6 +34,9 @@ export function taskReducer(todos, action){
           // if task's id DN equal to task payload id, keep it --- otw remove
           task.id !== action.payload.id
         ));
+
+      case ACTION.EDITTASK:
+        return
   
       // default action if neither of the actions above are invoked
       default:
