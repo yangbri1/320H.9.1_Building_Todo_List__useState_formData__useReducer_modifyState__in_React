@@ -11,14 +11,25 @@ import { ACTION } from "./reducerActions.mjs";
 export function taskReducer(todos, action){
     switch(action.type){
       case ACTION.ADDTASK:
-        // using spread operator to create a copy of previous todo list (both objs, arrays are immutable in state)
-        // along with a newly added todo to an array
+        // if no task is inserted ... just display current todos list (no change)
+        if(action.payload.title === ""){
+          return todos;
+        }
+
+        todos.forEach((task) => {
+          if(task.title === action.payload.title){
+            let numeric = '&#9658'
+            // string interpolation ($) on tempate literals (``) for a customize BOM .alert() -- recall: can NOT stylize BOM text
+            window.alert(`🚨Duplicate task detected: 🚨 \t --- ${numeric} ${action.payload.title} ${'&#9668'} \n \n💡(Toggling tasks is available ${'&#9787'})💡`);
+          }
+        });
         /* NOTE: PAYLOAD IS ALWAYS A PROPERTY OF THE ACTION OBJ 
         --- use dot notation to access payload & pass in "title" from input form */
+        /* use spread operator (...) to create a copy of previous todo list (both objs, arrays are immutable in state)
+        along with a newly added todo to an array */
         return [ newTask(action.payload.title), ...todos];
-        // if(title === ""){
-        //   return todos;
-        // }
+        // NOTE: placing spread operator for "todos" AFTER new inserted task will position new task right on top :)
+        
 
       case ACTION.TOGGLETASK:
         // traverse through todos list for each tasks & create a copy under function/conditions
