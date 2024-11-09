@@ -15,17 +15,23 @@ export default function Todo({ task, dispatch }){
                     dispatch({ type: ACTION.TOGGLETASK, payload: { id: task.id}})}
                     
             >Toggle</button>
-            if(task.complete == true){
-                {/* Delete button functionality */}
-                <button
-                
+            
+            {/* Delete button functionality */}
+            <label>
+                <input type="submit" id="delete_btn"
+                    onClick={() => 
+                        dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})} 
+                    disabled
+                />Delete
+            </label>
+            
+            {/* <button
+            
                 onClick={() => 
                     dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})}
                 
-                >Delete
-                </button>
-            }
-            
+            >Delete
+            </button> */}
             {/* Edit button functionality */}
             <button
                 onClick={() => 
