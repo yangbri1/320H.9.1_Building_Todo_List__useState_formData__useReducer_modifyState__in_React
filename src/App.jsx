@@ -64,12 +64,20 @@ function App() {
         return(
           
           <>
-            {/* calling function component */}
-            {/* Note: passing dispatch() function (w/ an "action" and payload.id) down to <Todo>
-            grants access to dispatch() fn in <Todo /> functional component */}
-            <label>
-              <input type="checkbox" defaultChecked={true} name="task" value={<Todo key={task.id} task={task} dispatch={dispatch} />} />
-              {/* <Todo key={task.id} task={task} dispatch={dispatch} /> */}
+            {/* <label> wrapper around <input> form auto focus to input when label is clicked  */}
+            {/* Note: "for" attribute refers to <input>'s id property & provides accessibility for screen readers  */}
+            {/* https://stackoverflow.com/questions/11992026/is-it-better-to-wrap-the-label-tag-around-a-form-item-or-use-the-for-attribute#:~:text=For%20what%20it%27s%20worth%2C%20you%20should%20always%20use,an%20element.%20At%20any%20rate%2C%20it%27s%20good%20practice. */}
+            {/* Note: "name" attribute used when sending data in form submission ... (could act as an identifier too like "id")*/}
+            {/* https://stackoverflow.com/questions/1397592/difference-between-id-and-name-attributes-in-html */}
+            <label for="task_id">
+              {/* list of React <input> form props (camelCase): https://react.dev/reference/react-dom/components/input */}
+              {/* Note: "defaultChecked" input props should by default by "false" as set in newTask() helper fn for unfinished tasks,
+               here just dynamically passing it via task.complete */}
+              <input type="checkbox" name="task" id="task_id" defaultChecked={task.complete} />
+              {/* calling function component */}
+              {/* Note: passing dispatch() function (w/ an "action" and payload.id) down to <Todo>
+              grants access to dispatch() fn in <Todo /> functional component */}
+              <Todo key={task.id} task={task} dispatch={dispatch} />
             </label>
             
           </>
