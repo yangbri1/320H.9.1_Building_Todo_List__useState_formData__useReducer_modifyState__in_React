@@ -12,17 +12,21 @@ export default function Todo({ task, dispatch }){
             {/* Toggle button to either  */}
             <button 
                 onClick={() => 
+                    // dispatch() sole purpose is to invoke taskReducer() function for computation of specific behavior for particular action
                     dispatch({ type: ACTION.TOGGLETASK, payload: { id: task.id}})}
                     
             >Toggle</button>
             
             {/* Delete button functionality */}
             <label>
-                <input type="submit" id="delete_btn"
+                <input type="submit" id="delete_btn" value="Delete"
                     onClick={() => 
                         dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})} 
-                    disabled
-                />Delete
+                    // https://www.geeksforgeeks.org/how-to-disable-a-button-in-reactjs/
+                    // Aside: DN know "disabled" could be written this way 
+                    // ternary operator to conditionally enable/disable "Delete" functionality based on task's complete status
+                    disabled={task.complete ? true : false}
+                />
             </label>
             
             {/* <button
@@ -36,6 +40,8 @@ export default function Todo({ task, dispatch }){
             <button
                 onClick={() => 
                     dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})}
+
+                // disabled={task.complete ? true : false}
                 
             >Edit
             </button>
