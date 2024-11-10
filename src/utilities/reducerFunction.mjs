@@ -39,6 +39,8 @@ export function taskReducer(todos, action){
         return [ newTask(action.payload.title), ...todos];
         // NOTE: placing spread operator for "todos" AFTER new inserted task will position new task right on top :)
         
+        // this is equivalent to above return block
+        // return [{ id: Date.now(), title: title, complete: false }, ...];
 
       case ACTION.TOGGLETASK:
         // traverse through todos list for each tasks & create a copy under function/conditions
@@ -64,7 +66,14 @@ export function taskReducer(todos, action){
         ));
 
       case ACTION.EDITTASK:
-        return
+        /* since objs/arrays & state are immutable in React ...
+        use JS array.map() method to create a new array populated w/ results by calling provided arrow fn on each elem in called array */
+        return(todos.map((task) => {
+          // if todo task's id matches current id
+          if(task.id === action.payload.id){
+            
+          }
+        }))
   
       // default action if neither of the actions above are invoked
       default:
