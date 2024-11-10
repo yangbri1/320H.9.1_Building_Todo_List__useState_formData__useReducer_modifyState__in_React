@@ -50,20 +50,20 @@ button:hover {
   border-color: #646cff;
 }
 
-#delete-btn:focus,
-#delete-btn:focus-visible,
+/* #delete-btn:focus,
+#delete-btn:focus-visible, */
 button:focus, 
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
   font-style: italic;
 }
 
-#delete-btn:active,
+/* #delete-btn:active,
 #edit-btn:active,
 button:active{
   background-color:#ff9100;
   font-family: Georgia, 'Times New Roman', Times, serif;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {

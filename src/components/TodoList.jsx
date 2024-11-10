@@ -1,8 +1,23 @@
 // import ACTION array
 import { ACTION } from "../utilities/reducerActions.mjs"
 
-// create functional component Todo() 
+// import useState() hook from React library -- mainly for "Edit" button
+import { useState } from "react";
+
+// create functional component TodoList() 
 export default function TodoList({ task, dispatch }){
+
+    // use React useState() hook to add state to functional component w/ "editStatus" (current state variable) set to "false" (initial value)
+    // later "setEditStatus" setter fn will update value of "editStatus" & React will re-render component w/ updated state
+    const [editStatus, setEditStatus] = useState(false);
+
+    // handler function for when button is pressed
+    function handleClick(){
+        // let edit_status = false;
+        // return(!edit_status);
+        setEditStatus(!editStatus); // toggle state variable "editStatus"
+    }
+
     return(
         <>  
 
@@ -19,7 +34,7 @@ export default function TodoList({ task, dispatch }){
                     onClick={() => 
                         // dispatch() sole purpose is to invoke taskReducer() function for computation of specific behavior for particular action
                         dispatch({ type: ACTION.TOGGLETASK, payload: { id: task.id}})}
-                />
+                />   
             </label>
             
             {/* utilize ternary operator conditional styling for when todo.complete status is true ... yield green, otw yield red */}
@@ -47,7 +62,8 @@ export default function TodoList({ task, dispatch }){
                     // Aside: DN know "disabled" could be written this way 
                     // ternary operator to conditionally enable "Delete" functionality when task's complete status is true
                     // Notice: "Delete" button availability depends on "Toggle" (green -- task.complete == true, red -- task.complete == false)
-                    disabled={task.complete ? false : true}
+                    disabled={task.complete ? false : true} // disabled={!task.complete} works too
+                    
                 />
             </label>
             
@@ -65,10 +81,12 @@ export default function TodoList({ task, dispatch }){
                     onClick={() => 
                         dispatch({ type: ACTION.EDITTASK, payload: { id: task.id}})}
                     defaultValue={`${task.title}`}
+                    disabled={!editStatus}
                 />
                 <button
-                    onClick={() => 
-                        dispatch({ type: ACTION.EDITTASK, payload: { id: task.id}})}
+                    // onClick={() => 
+                    //     dispatch({ type: ACTION.EDITTASK, payload: { id: task.id}})}
+                    onClick={handleClick}
 
                     // disabled={task.complete ? false : true}
                     value={"Save"}
@@ -84,4 +102,9 @@ export default function TodoList({ task, dispatch }){
 // function multipleFiring(){
 //     dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}});
 
+// }
+
+// function handleClick(){
+//     let edit_status = false;
+//     return(!edit_status);
 // }
