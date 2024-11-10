@@ -1,0 +1,2 @@
+[InternetShortcut]
+URL=https://stackoverflow.com/questions/9093992/change-html-form-input-type-by-javascript#:~:text=Yes%2C%20you%20can%20even%20change%20it%20by%20triggering,name%3D%27pass%27%20onclick%3D%22%28this.type%3D%27password%27%29%22%20%2F%3E%20%3Cinput%20type%3D%22text%22%20placeholder%3D%22date%22%20onfocusin%3D%22%28this.type%3D%27date%27%29%22%20onfocusout%3D%22%28this.type%3D%27text%27%29%22%3E

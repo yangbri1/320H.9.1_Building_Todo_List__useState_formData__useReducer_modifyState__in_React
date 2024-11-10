@@ -35,7 +35,7 @@ h1 {
   line-height: 1.1;
 }
 
-button, #delete_btn {
+button, #delete-btn, #edit-btn {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -49,9 +49,20 @@ button, #delete_btn {
 button:hover {
   border-color: #646cff;
 }
-button:focus,
+
+#delete-btn:focus,
+#delete-btn:focus-visible,
+button:focus, 
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+  font-style: italic;
+}
+
+#delete-btn:active,
+#edit-btn:active,
+button:active{
+  background-color:#ff9100;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 @media (prefers-color-scheme: light) {

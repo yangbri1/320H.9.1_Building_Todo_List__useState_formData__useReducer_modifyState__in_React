@@ -12,15 +12,14 @@ export default function TodoList({ task, dispatch }){
             {/* Note: "name" attribute used when sending data in form submission ... (could act as an identifier too like "id")*/}
             {/* https://stackoverflow.com/questions/1397592/difference-between-id-and-name-attributes-in-html */}
             <label for="checkbox_id">
-
                 {/* list of React <input> form props (camelCase): https://react.dev/reference/react-dom/components/input */}
                 {/* Note: "defaultChecked" input props should by default by "false" as set in newTask() helper fn for unfinished tasks,
                 here just dynamically passing it via task.complete */}
                 <input type="checkbox" name="task" id="checkbox_id" defaultChecked={task.complete} 
                     onClick={() => 
                         // dispatch() sole purpose is to invoke taskReducer() function for computation of specific behavior for particular action
-                        dispatch({ type: ACTION.TOGGLETASK, payload: { id: task.id}})}/>
-                
+                        dispatch({ type: ACTION.TOGGLETASK, payload: { id: task.id}})}
+                />
             </label>
             
             {/* utilize ternary operator conditional styling for when todo.complete status is true ... yield green, otw yield red */}
@@ -41,7 +40,7 @@ export default function TodoList({ task, dispatch }){
 
             {/* Delete button functionality */}
             <label for="delete-btn">
-                <input type="submit" id="delete_btn" value="Delete"
+                <input type="submit" id="delete-btn" value="Delete"
                     onClick={() => 
                         dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})} 
                     // https://www.geeksforgeeks.org/how-to-disable-a-button-in-reactjs/
@@ -60,13 +59,19 @@ export default function TodoList({ task, dispatch }){
             >Delete
             </button> */}
             {/* Edit button functionality */}
-            <label>
+            <label for="edit-btn">
+                <input type="text" id="edit-btn" 
+                //value="Save" 
+                    onClick={() => 
+                        dispatch({ type: ACTION.EDITTASK, payload: { id: task.id}})}
+                    defaultValue={`${task.title}`}
+                />
                 <button
                     onClick={() => 
-                        dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})}
+                        dispatch({ type: ACTION.EDITTASK, payload: { id: task.id}})}
 
                     // disabled={task.complete ? false : true}
-                    
+                    value={"Save"}
                 >Edit
                 </button>
             </label>
@@ -75,3 +80,8 @@ export default function TodoList({ task, dispatch }){
         </>
     )
 }
+
+// function multipleFiring(){
+//     dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}});
+
+// }
