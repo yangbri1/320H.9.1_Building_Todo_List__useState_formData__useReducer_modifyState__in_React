@@ -72,7 +72,7 @@ export function taskReducer(todos, action){
           // if todo task's id matches current id
           if(task.id === action.payload.id){
             // not sure if just assigning key to new value in React obj will work pretty sure NOT as immutable so would need spread operator, map, filter, or other
-            task.title = action.payload.title;
+            // task.title = action.payload.title;
             return({ ...task, title: action.payload.title });
             // return(action.payload.title);
           }

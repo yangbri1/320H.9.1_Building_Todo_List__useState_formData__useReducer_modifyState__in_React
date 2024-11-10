@@ -38,24 +38,48 @@ export default function TodoList({ task, dispatch }){
             </label>
             
             {/* utilize ternary operator conditional styling for when todo.complete status is true ... yield green, otw yield red */}
-            <span style={{ color: task.complete ?  "rgb(0,250,154)" : "rgb(255,0,40)" }}>
+            {/* <span style={{ color: task.complete ?  "rgb(0,250,154)" : "rgb(255,0,40)" }}>
                 {task.title} {" "}
-            </span>
+            </span> */}
 
             {/* Toggle button functionality -- shows "button" works too --- however it only look for click activation, unlike input form which could look for type=button, submit, checkbox, etc.
              preferences varies: https://stackoverflow.com/questions/7117639/input-type-submit-vs-button-tag-are-they-interchangeable  */}
-            <label for="toggle-btn">
+            {/* <label for="toggle-btn">
                 <button id="toggle-btn"
                     onClick={() => 
                         // dispatch() sole purpose is to invoke taskReducer() function for computation of specific behavior for particular action
                         dispatch({ type: ACTION.TOGGLETASK, payload: { id: task.id}})}
                         
                 >Toggle</button>
+            </label> */}
+
+            {/* Edit button functionality */}
+            <label for="edit-btn1">
+                {/* Added some conditional styling based on task.complete status */}
+                <input type="text" id="edit-btn1" style={{ color: task.complete ? "#0077b6" : "#d62828" }} 
+                //value="Save" 
+                    onClick={() => 
+                        dispatch({ type: ACTION.EDITTASK, payload: { id: task.id}})}
+                    defaultValue={`${task.title}`}  // set default value of input type text to inputted task.title from earlier ADDED ACTIOn
+                    disabled={!editStatus}          // disable or enable input form accessibility based on state variable value
+                />
+                <button id="edit-btn2"
+                    // onClick={() => 
+                    //     dispatch({ type: ACTION.EDITTASK, payload: { id: task.id}})}
+
+                    // invoke handler function when button pressed
+                    onClick={handleClick}
+
+                    // disabled={task.complete ? false : true}
+
+                    // conditionally change button's value attribute depending on state variable's value
+                >{editStatus ? "Save💾" : "Edit📝"}
+                </button>
             </label>
 
             {/* Delete button functionality */}
             <label for="delete-btn">
-                <input type="submit" id="delete-btn" value="Delete"
+                <input type="submit" id="delete-btn" value="Delete🗑️"
                     onClick={() => 
                         dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})} 
                     // https://www.geeksforgeeks.org/how-to-disable-a-button-in-reactjs/
@@ -74,25 +98,6 @@ export default function TodoList({ task, dispatch }){
                 
             >Delete
             </button> */}
-            {/* Edit button functionality */}
-            <label for="edit-btn">
-                <input type="text" id="edit-btn" 
-                //value="Save" 
-                    onClick={() => 
-                        dispatch({ type: ACTION.EDITTASK, payload: { id: task.id}})}
-                    defaultValue={`${task.title}`}
-                    disabled={!editStatus}
-                />
-                <button
-                    // onClick={() => 
-                    //     dispatch({ type: ACTION.EDITTASK, payload: { id: task.id}})}
-                    onClick={handleClick}
-
-                    // disabled={task.complete ? false : true}
-                    value={"Save"}
-                >Edit
-                </button>
-            </label>
             
             <br />
         </>

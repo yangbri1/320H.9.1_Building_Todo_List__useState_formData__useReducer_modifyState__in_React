@@ -52,8 +52,9 @@ function App() {
       {/* onSubmit event handler that triggers whenever form data is submitted  */}
       {/* https://stackoverflow.com/questions/23762474/whats-the-difference-between-onclick-and-onsubmit */}
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Add task" value={title} onChange={(event) => setTitle(event.target.value)} />
-        <input type="submit" value="Enter" />
+        {/* applied 1) inline styling --- as it has highest precedence compared to 2) internal styling, 3) external styling */}
+        <input type="text" placeholder="Add task" value={title} id="search-bar" onChange={(event) => setTitle(event.target.value)} style={{color: "#386641"}} />
+        <input type="submit" value="Enter🔍" id="search-btn" />
         {/* onClick event is for when anything is clicked */}
         {/* <input type="button" onClick={handleSubmit} value="Enter" /> */}
       </form>
