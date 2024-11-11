@@ -56,7 +56,7 @@ export default function TodoList({ task, dispatch }){
             {/* Edit button functionality */}
             <label for="edit-btn1">
                 {/* Added some conditional styling based on task.complete status */}
-                <input type="text" id="edit-btn1" title="Access granted via 'Edit'" style={{ color: task.complete ? "#0077b6" : "#d62828"}} 
+                <input type="text" id="edit-btn1" title="Access granted via 'Edit'" style={{ color: task.complete ? "#0077b6" : "#6a040f"}} 
                 //value="Save" 
                     onClick={() => 
                         dispatch({ type: ACTION.EDITTASK, payload: { id: task.id}})}

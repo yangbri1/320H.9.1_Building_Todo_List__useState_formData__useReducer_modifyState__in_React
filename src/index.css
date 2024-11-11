@@ -10,6 +10,9 @@
   /* background: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%); */
   background: linear-gradient(132deg, rgb(30, 144, 255) 0.00%, rgb(138, 43, 226) 100.00%);
   /* background: linear-gradient(199deg, rgb(251, 165, 116) 42.37%, rgb(216, 245, 251) 100.00%); */
+  background: linear-gradient(132deg, rgb(237, 19, 19) 0.00%, rgb(250, 170, 0) 0.00%, rgb(213, 74, 255) 100.00%);
+  /* background: linear-gradient(132deg, rgb(250, 170, 0) 0.00%, rgb(213, 74, 255) 100.00%, rgb(237, 19, 19) 100.00%); */
+  /* background: linear-gradient(0deg, rgb(250, 170, 0) 0.00%, rgb(213, 74, 255) 100.00%, rgb(237, 19, 19) 100.00%); */
   opacity: 1;
   transition: opacity 3s;
   font-synthesis: none;
@@ -52,6 +55,7 @@ h1 {
   background: linear-gradient(152deg, rgb(251, 251, 255) 0.00%, rgb(215, 223, 252) 3.44%);
   width:450px;
 }
+
 #search-btn{
   color:#ad2831;
   /* background-color: black; */
@@ -70,10 +74,11 @@ h1 {
   width:300px;  
 }
 
+#search-bar:focus,
 /* Note: focus-visible pseudo-element different from focus as it only show features when panned over via keyboard or assisted technology */
 #edit-btn1:focus-visible{
   outline: 2px solid #7b2cbf;
-  background-image: linear-gradient(rgb(52, 58, 64, 70%) 0 0);
+  background-image: linear-gradient(rgba(52, 58, 64, 0.267) 0 0);
 }
 
 button, #search-btn {

@@ -50,9 +50,3 @@ input::placeholder{
   text-align:center;
   
 }
-
-Button{
-  position:fixed;
-  top:0;
-  right:0;
-}
