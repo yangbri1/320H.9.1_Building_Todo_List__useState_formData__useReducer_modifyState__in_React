@@ -36,7 +36,7 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 4.2em;
   line-height: 1.1;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
@@ -50,10 +50,12 @@ h1 {
   font-family: inherit;
   /* background: linear-gradient(132deg, rgb(253, 112, 136) 0.00%, rgb(255, 211, 165) 100.00%); */
   background: linear-gradient(152deg, rgb(251, 251, 255) 0.00%, rgb(215, 223, 252) 3.44%);
+  width:450px;
 }
 #search-btn{
   color:#ad2831;
   /* background-color: black; */
+  
 }
 
 #edit-btn1{
@@ -64,6 +66,8 @@ h1 {
   font-weight: 500;
   font-family: inherit;
   background: linear-gradient(360deg, rgb(251, 251, 255) 0.00%, rgb(215, 223, 252) 15.89%);
+  /* expand search bar length */
+  width:300px;  
 }
 
 button, #delete-btn, #search-btn {
@@ -115,4 +119,15 @@ button:active{
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* conditional styling on media quieries -- darker background for different devices (tablet to large phone viewport size) -- less harsh on the eyes */
+@media (max-width: 800px) {
+  body {
+    background: linear-gradient(132deg, rgb(65, 80, 95) 0.00%, rgb(36, 37, 38) 100.00%);
+  }
+}
+
+#edit-btn1 input:disabled{
+  cursor: not-allowed;
 }
