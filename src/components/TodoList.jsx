@@ -30,7 +30,7 @@ export default function TodoList({ task, dispatch }){
                 {/* list of React <input> form props (camelCase): https://react.dev/reference/react-dom/components/input */}
                 {/* Note: "defaultChecked" input props should by default by "false" as set in newTask() helper fn for unfinished tasks,
                 here just dynamically passing it via task.complete */}
-                <input type="checkbox" name="task" id="checkbox_id" defaultChecked={task.complete} 
+                <input type="checkbox" name="task" id="checkbox_id" title="✔️ to enable 'Delete'" defaultChecked={task.complete} 
                     onClick={() => 
                         // dispatch() sole purpose is to invoke taskReducer() function for computation of specific behavior for particular action
                         dispatch({ type: ACTION.TOGGLETASK, payload: { id: task.id}})}
@@ -56,14 +56,15 @@ export default function TodoList({ task, dispatch }){
             {/* Edit button functionality */}
             <label for="edit-btn1">
                 {/* Added some conditional styling based on task.complete status */}
-                <input type="text" id="edit-btn1" style={{ color: task.complete ? "#0077b6" : "#d62828"}, {cursor: "not-allowed"} }} 
+                <input type="text" id="edit-btn1" title="Access granted via 'Edit'" style={{ color: task.complete ? "#0077b6" : "#d62828"}} 
                 //value="Save" 
                     onClick={() => 
                         dispatch({ type: ACTION.EDITTASK, payload: { id: task.id}})}
                     defaultValue={`${task.title}`}  // set default value of input type text to inputted task.title from earlier ADDED ACTIOn
                     disabled={!editStatus}          // disable or enable input form accessibility based on state variable value
                 />
-                <button id="edit-btn2"
+                {/* <div class="change-cursor"></div> */}
+                <button id="edit-btn2" title="Modify current task"
                     // onClick={() => 
                     //     dispatch({ type: ACTION.EDITTASK, payload: { id: task.id}})}
 
@@ -78,8 +79,8 @@ export default function TodoList({ task, dispatch }){
             </label>
 
             {/* Delete button functionality */}
-            <label for="delete-btn">
-                <input type="submit" id="delete-btn" value="Delete🗑️"
+            <label id="delete-btn">
+                <input type="submit" id="delete-btn" value="Delete🗑️" title="Are you sure?"
                     onClick={() => 
                         dispatch({ type: ACTION.REMOVETASK, payload: { id: task.id}})} 
                     // https://www.geeksforgeeks.org/how-to-disable-a-button-in-reactjs/

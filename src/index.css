@@ -70,7 +70,13 @@ h1 {
   width:300px;  
 }
 
-button, #delete-btn, #search-btn {
+/* Note: focus-visible pseudo-element different from focus as it only show features when panned over via keyboard or assisted technology */
+#edit-btn1:focus-visible{
+  outline: 2px solid #7b2cbf;
+  background-image: linear-gradient(rgb(52, 58, 64, 70%) 0 0);
+}
+
+button, #search-btn {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 1em 1.2em;
@@ -83,12 +89,24 @@ button, #delete-btn, #search-btn {
   transition: border-color 0.25s;
 }
 
+#delete-btn{
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 1em 0.5em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  /* change to wait when hover */
+  cursor: wait;
+}
+
 #checkbox_id{
   transform: scale(1.5);
   width:30px;
   
-
 }
+
 button:hover {
   border-color: #646cff;
 }
@@ -115,6 +133,7 @@ button:active{
   }
   a:hover {
     color: #747bff;
+    cursor: not-allowed;
   }
   button {
     background-color: #f9f9f9;
@@ -128,6 +147,19 @@ button:active{
   }
 }
 
-#edit-btn1 input:disabled{
+/* inputs with attribute of "disabled" active will change its cursor hover property  */
+input[disabled]{
+  cursor:not-allowed;
+}
+
+/* if input attribute "disabled" is active in element id "delete-btn" -> change cursor hover property */
+#delete-btn > input[disabled]{
+  cursor:not-allowed;
+}
+
+/* .change-cursor{
   cursor: not-allowed;
 }
+#edit-btn1 input:disabled ~ .change-cursor{
+  cursor: not-allowed;
+} */
