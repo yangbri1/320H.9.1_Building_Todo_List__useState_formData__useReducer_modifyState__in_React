@@ -1,0 +1,2 @@
+/* house handleSubmit() handler fn so component <TodoList />  -> "edit-btn" could later invoke it within wrapper <form onSubmit={handleSubmit}></form> 
+--- allows keyboard "entering" to count as submission too -- extra side functionality */

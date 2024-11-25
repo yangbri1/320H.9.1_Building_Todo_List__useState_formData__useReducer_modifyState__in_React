@@ -21,17 +21,20 @@ import './App.css'
 // import Button from 'react-bootstrap/Button';
 // import Offcanvas from 'react-bootstrap/Offcanvas';
 
-function dayOrNight(){
-  const minute = 60 * 1000;
-  const hours = 60 * minute;
-  let time = Date.now();
-}
+// function dayOrNight(){
+//   const minute = 60 * 1000;
+//   const hours = 60 * minute;
+//   let time = Date.now();
+// }
 
 // root component App()
 function App() {
   // call useState() React hook at top level of component to declare state variable -- collect form data
   // variable "title" to be updated via form input
   const [title, setTitle] = useState("");
+
+  // testing something -------------- w/ 2nd block to have values of both input to  recorded in DOM
+  const [level, setLevel] = useState(0);
 
   // instantiate state for Bootstrap Offcanvas
   // const [show, setShow] = useState(false);
@@ -52,8 +55,15 @@ function App() {
     // "dispatch" invokes reducer() function so that it passes in
     // "type" for wanted action,
     // "payload" for any additional values ("title" variable in useState() hook) to calculate state via action
-    dispatch({ type: ACTION.ADDTASK, payload: { title: title }});
+    /* ======= ORIGINAL ++++++++ */
+    // dispatch({ type: ACTION.ADDTASK, payload: { title: title }});
+    // setTitle('');  // clears out task after typing input
+    /* ======= ORIGINAL ++++++++ */
+
+    // TESTING SOMETHING
+    dispatch({ type: ACTION.ADDTASK, payload: { title: title, level: level }});
     setTitle('');  // clears out task after typing input
+    setLevel(0);
   }
   // technically able to put handleSubmit() into taskReducer(), omitted setTitle & use a button,
   // NavBar for header too? Check crypto lab
@@ -72,12 +82,31 @@ function App() {
       <h1 alt="Here lies the todo list below" title="Put in some tasks that needs reminding">Create Todo List</h1>
       {/* onSubmit event handler that triggers whenever form data is submitted  */}
       {/* https://stackoverflow.com/questions/23762474/whats-the-difference-between-onclick-and-onsubmit */}
+      {/* Interaction: Upon submission of form (keyboard "enter" or clicking "Submit" button) by calling handleSubmit() fn, prevents refresh ...*/}
       <form onSubmit={handleSubmit}>
         {/* applied 1) inline styling --- as it has highest precedence compared to 2) internal styling, 3) external styling */}
-        <input type="text" placeholder="Add task" value={title} id="search-bar" title="Please enter a task" onChange={(event) => setTitle(event.target.value)} style={{color: "#386641"}} />
-        <input type="submit" value="Enter🔍" id="search-btn" title="Vamos!" />
+        {/* onChange event handler - triggers a script (JS function) when value of element were to change 
+        event.target -- element triggering event
+        event.target.value -- current value of input field (text typed by user) 
+        setTitle() -- setter function from React state hook useState() -- updates state variable "title" w/ newly typed "event.target.value" */}
+
+        {/*-------------- original -------------- */}
+        {/* <input type="text" placeholder="Add task" value={title} id="search-bar" title="Please enter a task" onChange={(event) => setTitle(event.target.value)} style={{color: "#386641"}} />
+        <input type="submit" value="Enter🔍" id="search-btn" title="Vamos!" /> */}
+        {/*-------------- original -------------- */}
+        
         {/* onClick event is for when anything is clicked */}
         {/* <input type="button" onClick={handleSubmit} value="Enter" /> */}
+
+        {/* testing why when btn is clicked only the "Add task" is included below in DOM (not b/c of sequencing it seems) */}
+        <label htmlFor="search-bar">
+          <input type="text" placeholder="Add task" value={title} id="search-bar" title="Please enter a task" onChange={(event) => setTitle(event.target.value)} style={{color: "#386641"}} />
+        </label>
+        <label htmlFor="search-bar2">
+          <input type="number" placeholder="Add difficulty level" value={level} id="search-bar2" title="Please enter a difficulty lvl" onChange={(event) => setLevel(event.target.value)} style={{color: "#386641"}} />
+        </label>
+        <button type="submit" id="search-btn" title="Vamos!">Enter🔍</button>
+      
       </form>
 
       <br />

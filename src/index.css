@@ -44,6 +44,7 @@ h1 {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+#search-bar2,
 #search-bar{
   border-radius: 8px;
   border: 1px solid transparent;
@@ -74,6 +75,7 @@ h1 {
   width:300px;  
 }
 
+#search-bar2:focus,
 #search-bar:focus,
 /* Note: focus-visible pseudo-element different from focus as it only show features when panned over via keyboard or assisted technology */
 #edit-btn1:focus-visible{
