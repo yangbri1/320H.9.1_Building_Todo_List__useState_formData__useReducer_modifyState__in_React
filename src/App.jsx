@@ -33,7 +33,7 @@ function App() {
   // variable "title" to be updated via form input
   const [title, setTitle] = useState("");
   // testing something
-  const [level, setLevel] = useState(0);
+  // const [level, setLevel] = useState(0);
 
   // instantiate state for Bootstrap Offcanvas
   // const [show, setShow] = useState(false);
@@ -69,8 +69,6 @@ function App() {
 
   return (
     <>
-      
-
       <h1 alt="Here lies the todo list below" title="Put in some tasks that needs reminding">Create Todo List</h1>
       {/* onSubmit event handler that triggers whenever form data is submitted  */}
       {/* https://stackoverflow.com/questions/23762474/whats-the-difference-between-onclick-and-onsubmit */}
@@ -81,13 +79,12 @@ function App() {
         event.target -- element triggering event
         event.target.value -- current value of input field (text typed by user) 
         setTitle() -- setter function from React state hook useState() -- updates state variable "title" w/ newly typed "event.target.value" */}
-        <input type="number" placeholder="Add difficulty level" value={level} id="search-bar" title="Please enter a difficulty lvl" onChange={(event) => setLevel(event.target.value)} style={{color: "#386641"}} />
+        {/* <input type="number" placeholder="Add difficulty level" value={level} id="search-bar" title="Please enter a difficulty lvl" onChange={(event) => setLevel(event.target.value)} style={{color: "#386641"}} /> */}
         <input type="text" placeholder="Add task" value={title} id="search-bar" title="Please enter a task" onChange={(event) => setTitle(event.target.value)} style={{color: "#386641"}} />
         {/* <button type="submit" id="search-btn" title="Vamos!">Enter🔍</button> */}
         <input type="submit" value="Enter🔍" id="search-btn" title="Vamos!" />
         {/* onClick event is for when anything is clicked */}
         {/* <input type="button" onClick={handleSubmit} value="Enter" /> */}
-        
       </form>
 
       <br />
@@ -105,6 +102,7 @@ function App() {
             {/* Note: passing dispatch() function (w/ an "action" and payload.id) down to <TodoList>
             grants access to dispatch() fn in <TodoList /> functional component */}
             <TodoList key={task.id} task={task} dispatch={dispatch} />
+            {/* changing key to key={title.id}, key={title}, key={task} -- didn't work */}
           </>
           
           

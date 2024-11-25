@@ -26,7 +26,7 @@ export default function TodoList({ task, dispatch }){
             {/* https://stackoverflow.com/questions/11992026/is-it-better-to-wrap-the-label-tag-around-a-form-item-or-use-the-for-attribute#:~:text=For%20what%20it%27s%20worth%2C%20you%20should%20always%20use,an%20element.%20At%20any%20rate%2C%20it%27s%20good%20practice. */}
             {/* Note: "name" attribute used when sending data in form submission ... (could act as an identifier too like "id")*/}
             {/* https://stackoverflow.com/questions/1397592/difference-between-id-and-name-attributes-in-html */}
-            <label for="checkbox_id">
+            <label htmlFor="checkbox_id">
                 {/* list of React <input> form props (camelCase): https://react.dev/reference/react-dom/components/input */}
                 {/* Note: "defaultChecked" input props should by default by "false" as set in newTask() helper fn for unfinished tasks,
                 here just dynamically passing it via task.complete */}
@@ -54,7 +54,7 @@ export default function TodoList({ task, dispatch }){
             </label> */}
 
             {/* Edit button functionality */}
-            <label for="edit-btn1">
+            <label htmlFor="edit-btn1">
                 {/* Added some conditional styling based on task.complete status */}
                 <input type="text" id="edit-btn1" title="Access granted via 'Edit'" style={{ color: task.complete ? "#0077b6" : "#6a040f"}} 
                 //value="Save" 
