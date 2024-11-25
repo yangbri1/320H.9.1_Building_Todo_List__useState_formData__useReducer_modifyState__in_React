@@ -32,8 +32,7 @@ function App() {
   // call useState() React hook at top level of component to declare state variable -- collect form data
   // variable "title" to be updated via form input
   const [title, setTitle] = useState("");
-
-  // testing something -------------- w/ 2nd block to have values of both input to  recorded in DOM
+  // testing something
   const [level, setLevel] = useState(0);
 
   // instantiate state for Bootstrap Offcanvas
@@ -55,15 +54,8 @@ function App() {
     // "dispatch" invokes reducer() function so that it passes in
     // "type" for wanted action,
     // "payload" for any additional values ("title" variable in useState() hook) to calculate state via action
-    /* ======= ORIGINAL ++++++++ */
-    // dispatch({ type: ACTION.ADDTASK, payload: { title: title }});
-    // setTitle('');  // clears out task after typing input
-    /* ======= ORIGINAL ++++++++ */
-
-    // TESTING SOMETHING
-    dispatch({ type: ACTION.ADDTASK, payload: { title: title, level: level }});
+    dispatch({ type: ACTION.ADDTASK, payload: { title: title }});
     setTitle('');  // clears out task after typing input
-    setLevel(0);
   }
   // technically able to put handleSubmit() into taskReducer(), omitted setTitle & use a button,
   // NavBar for header too? Check crypto lab
@@ -89,24 +81,13 @@ function App() {
         event.target -- element triggering event
         event.target.value -- current value of input field (text typed by user) 
         setTitle() -- setter function from React state hook useState() -- updates state variable "title" w/ newly typed "event.target.value" */}
-
-        {/*-------------- original -------------- */}
-        {/* <input type="text" placeholder="Add task" value={title} id="search-bar" title="Please enter a task" onChange={(event) => setTitle(event.target.value)} style={{color: "#386641"}} />
-        <input type="submit" value="Enter🔍" id="search-btn" title="Vamos!" /> */}
-        {/*-------------- original -------------- */}
-        
+        <input type="number" placeholder="Add difficulty level" value={level} id="search-bar" title="Please enter a difficulty lvl" onChange={(event) => setLevel(event.target.value)} style={{color: "#386641"}} />
+        <input type="text" placeholder="Add task" value={title} id="search-bar" title="Please enter a task" onChange={(event) => setTitle(event.target.value)} style={{color: "#386641"}} />
+        {/* <button type="submit" id="search-btn" title="Vamos!">Enter🔍</button> */}
+        <input type="submit" value="Enter🔍" id="search-btn" title="Vamos!" />
         {/* onClick event is for when anything is clicked */}
         {/* <input type="button" onClick={handleSubmit} value="Enter" /> */}
-
-        {/* testing why when btn is clicked only the "Add task" is included below in DOM (not b/c of sequencing it seems) */}
-        <label htmlFor="search-bar">
-          <input type="text" placeholder="Add task" value={title} id="search-bar" title="Please enter a task" onChange={(event) => setTitle(event.target.value)} style={{color: "#386641"}} />
-        </label>
-        <label htmlFor="search-bar2">
-          <input type="number" placeholder="Add difficulty level" value={level} id="search-bar2" title="Please enter a difficulty lvl" onChange={(event) => setLevel(event.target.value)} style={{color: "#386641"}} />
-        </label>
-        <button type="submit" id="search-btn" title="Vamos!">Enter🔍</button>
-      
+        
       </form>
 
       <br />

@@ -13,14 +13,14 @@ export function taskReducer(todos, action){
     switch(action.type){
       case ACTION.ADDTASK:
         // if no task is inserted ... just display current todos list (no change)
-        if(action.payload.title === "" || action.payload.level === 0){
+        if(action.payload.title === ""){
           return todos;
         }
         let taskInclude = false;
         // iterate through each task in todos list
         todos.forEach((task) => {
           // if task is already on the list pop-up alert user 
-          if(task.title === action.payload.title || task.level === action.payload.level){
+          if(task.title === action.payload.title){
             // string interpolation ($) on tempate literals (``) for a customize BOM .alert() -- recall: can NOT stylize BOM text
             let dupeTask = window.alert(`🚨 Duplicate task detected: 🚨 \t "${action.payload.title}" \n \n 💡 Notice: Toggling tasks is available 💡`);
             taskInclude = true;
@@ -36,7 +36,7 @@ export function taskReducer(todos, action){
         --- use dot notation to access payload & pass in "title" from input form */
         /* use spread operator (...) to create a copy of previous todo list (both objs, arrays are immutable in state)
         along with a newly added todo to an array */
-        return [ newTask(action.payload.title, action.payload.level), ...todos];
+        return [ newTask(action.payload.title), ...todos];
         // NOTE: placing spread operator for "todos" AFTER new inserted task will position new task right on top :)
         
         // this is equivalent to above return block
